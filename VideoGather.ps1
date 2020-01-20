@@ -9,9 +9,7 @@ if (!(gmo PSYouTube)){
 $videoIDArray = New-Object System.Collections.ArrayList
 $videoInfoArray = New-Object System.Collections.ArrayList
 
-$seedVideo = @("Jhq23NKsjjg",
-    "fXuVdz6nlHg",
-    "ml2E8TnU"
+$seedVideo = @("YhXd7y_jA70","rDmu2cki2II"
 )
 Write-Output "Found $($seedVideo.Count) seed videos"
 ForEach($video in $seedVideo  ){
@@ -44,7 +42,7 @@ ForEach($video in $relatedVideos  | select -expand videoID -Unique  ){
         continue
     }
     "adding video thumbnail for $($videoInfo.title)"
-    Get-PSYouTubeVideoThumbnail -video $video -fileName $videoInfo.title
+    Get-PSYouTubeVideoThumbnail -video $video -fileName $video
     [void]$videoInfoArray.Add($videoInfo)
 }
 $shortDate = "$([DateTime]::Now.ToShortDateString().Replace('/','-'))-$([DateTime]::Now.ToLongTimeString().Replace(':','_').Replace(' ',$null))"
